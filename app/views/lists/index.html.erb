@@ -1,7 +1,12 @@
 
 <ul>
   <% @lists.each do |list| %>
-<li><%=link_to list.name, list_path(list)%></li>
+    <li>
+      <%=link_to list.name, list_path(list)%>
+      <%= link_to list_path(List.find_by(name: list.name)), data: {turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <i class="fa-solid fa-xmark"></i>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 <div>

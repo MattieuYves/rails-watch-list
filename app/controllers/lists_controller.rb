@@ -19,6 +19,13 @@ class ListsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+
+  end
+
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to list_path
   end
 
   private
